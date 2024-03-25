@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    
+    <title>Alura ONE G6 - Challenge Encriptador</title>
+</head>
+
+<body>
+
+    <header>
+        <a class="logo" href="index.html" target="_self" rel="noopener noreferrer">
+          <img src="assets/images/logoAlura.svg" alt="Logo de Alura">
+        </a>
+        <p class="titulo">&nbsp; Challenge Encriptador G6</p>
+    </header>
+
+    <main>
+
+        <section class="inputSection">
+          <textarea class="inputSectionTextarea" placeholder="Ingrese el texto aquí" required></textarea>
+          <div class="inputSectionContainerWarning">
+            <img src="assets/images/exclamation.svg" alt="Exclamacion">
+            <p>&nbsp; Solo se permiten los caracteres ".,!?" y letras minúsculas sin acentos por favor</p>
+          </div>
+          <div class="inputSectionContainerButtons">
+            <button class="buttonEncrypt buttonEffect">Encriptar</button>
+            <button class="buttonDecrypt buttonEffect">Desencriptar</button>
+          </div>
+        </section>
+  
+        <section class="outputSection">
+          <textarea class="outputSectionTextarea"></textarea>
+          <div class="outputSectionContainerNotMessage">
+            <img src="assets/images/searching.gif" alt="People illustrations by Storyset">
+            <p class="notMessage">No se encontro ningun mensaje</p>
+          </div>
+          <div class="oututSectionContainerButtons">
+            <button class="buttonCopy buttonEffect">Copiar</button>
+          </div>
+        </section>
+  
+    </main>
+
+    <footer>
+        <div class="copyright">Francisco S&aacute;nchez P&eacute;rez &#169; 2024</div>
+        <div class="containerIcons">
+          <a href="https://github.com/SiGMafEAr" target="_blank" rel="noopener noreferrer"><img src="assets/images/github.svg" alt="Perfil en GitHub"></a>
+          <a href="https://www.linkedin.com/in/sperezfrancisco" target="_blank" rel="noopener noreferrer"><img src="assets/images/linkedin.svg" alt="Perfil en LinkedIn"></a>
+          <a href="https://www.facebook.com/SPerezFrancisco" target="_blank" rel="noopener noreferrer"><img src="assets/images/facebook.svg" alt="Perfil en facebook"></a>
+          <a href="https://twitter.com/sPerezFranc" target="_blank" rel="noopener noreferrer"><img src="assets/images/x.svg" alt="Perfil en X"></a>
+        </div>
+    </footer>
+  
+
+      <script src="assets/js/index.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
