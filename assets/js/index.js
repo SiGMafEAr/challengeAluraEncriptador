@@ -30,7 +30,7 @@ btnEncrypt.addEventListener("click", function () {
       showMessageOutput(encryptedText);
       textAreaInp.value = "";
     } else {
-      myAlert("error", "El texto no tiene el formato especificado");
+      myAlert("error", "El texto no tiene el formato requerido");
       showMessageOutput("");
     }
   } else {
@@ -108,6 +108,7 @@ function decryptText(textUser) {
 }
 
 function showMessageOutput(phrase) {
+  textAreaInp.focus();
   textAreaOut.innerText = phrase;
 }
 

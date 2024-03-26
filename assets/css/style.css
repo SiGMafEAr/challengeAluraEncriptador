@@ -160,7 +160,20 @@ header {
     background-color: white;
     flex: 1;
     color: rgba(73, 80, 87, 1);
+    cursor: default;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: crosshair;
   }
+
+  .outputSectionTextarea::selection {
+    background-color: transparent;
+}
 
   .outputSectionContainerButtons {
     display: flex;
@@ -267,8 +280,25 @@ header {
   }
   
   .containerIcons img:hover {
-    transform: scale(1.2);
-    transition: 350ms ease;
+    animation: bounce 1000ms linear;
+  }
+
+  @keyframes bounce{
+    0%{
+      transform: scale(1.2);
+    }
+    25%{
+      transform: scale(0.8);
+    }
+    50%{
+      transform: scale(1.1);
+    }
+    75%{
+      transform: scale(0.9);
+    }
+    100%{ 
+      transform: scale(1);
+    }
   }
   
   .copyright {
