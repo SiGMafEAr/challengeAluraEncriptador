@@ -65,7 +65,8 @@ btnCopy.addEventListener("click", function () {
   textAreaOut.select();
   if (textAreaOut.value.trim().length > 0) {
     navigator.clipboard.writeText(textAreaOut.value)
-      .then(() => { myAlert("success", "Texto copiado"); })
+      .then(() => { myAlert("success", "Texto copiado");
+      showMessageOutput(""); })
       .catch(error => { myAlert("error", "No se pudo copiar"); });
   } else {
     myAlert("error", "No hay texto que copiar");
