@@ -32,12 +32,7 @@ header {
   transform: scale(1);
 }
 
-.logo {
-  background-color: transparent;
-}
-
 .logo img {
-  background-color: transparent;
   width: 2rem;
   margin: 20px;
   transform: scale(2);
@@ -102,7 +97,6 @@ textarea::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  background-color: transparent;
   margin-top: 1%;
 }
 
@@ -112,7 +106,6 @@ textarea::-webkit-scrollbar-thumb {
 
 .inputSectionContainerWarning p {
   color: #727374;
-  background-color: transparent;
   font-size: 15px;
   font-weight: bold;
 }
@@ -134,7 +127,6 @@ textarea::-webkit-scrollbar-thumb {
   justify-content: center;
   align-items: center;
   z-index: 1;
-  background-color: transparent;
 }
 
 .outputSectionContainerNotMessage img {
@@ -145,7 +137,6 @@ textarea::-webkit-scrollbar-thumb {
   font-size: 0.9rem;
   text-align: center;
   padding: 3%;
-  background-color: transparent;
 }
 
 .outputSectionContainerNotMessage p:first-of-type {
@@ -171,17 +162,12 @@ textarea::-webkit-scrollbar-thumb {
   cursor: crosshair;
 }
 
-.outputSectionTextarea::selection {
-  background-color: transparent;
-}
-
 .outputSectionContainerButtons {
   display: flex;
   margin-top: 3%;
   justify-content: space-around;
 }
 
-/*////////////////////////////////////////////////////////////////*/
 .buttonEffect {
 font-size: 1em;
 color: white;
@@ -197,9 +183,11 @@ box-shadow: 0 0 0.25em #333;
 cursor: pointer;
 outline: none;
 }
+
 .buttonEffect:hover{
 background: rgb(0, 0, 192);
 }
+
 .buttonEffect::before {
 content: "";
 position: absolute;
@@ -215,6 +203,7 @@ transition: all 0.1s ease-out;
 -webkit-transition: all 0.1s ease-out;
 border-left-color: rgb(0, 0, 192);
 }
+
 .buttonEffect::after {
 content: "";
 position: absolute;
@@ -230,9 +219,11 @@ transition: all 0.1s ease-out;
 -webkit-transition: all 0.1s ease-out;
 border-right-color: rgb(0, 0, 192);
 }
+
 .buttonEffect:active {
 -webkit-transform: scale(1.2, 0.8);
 }
+
 .buttonEffect:active::before {
 border-top-width: 10px;
 border-bottom-width: 10px;
@@ -240,6 +231,7 @@ border-radius: 0.2em;
 top: -10px;
 border-left-color: rgb(0, 0, 192);
 }
+
 .buttonEffect:active::after {
 border-top-width: 10px;
 border-bottom-width: 10px;
@@ -247,8 +239,6 @@ border-radius: 0.2em;
 top: -10px;
 border-right-color: rgb(0, 0, 192);
 }
-/* end button */
-/*//////////////////////////////////////////////////////////////////////////*/
 
 footer {
   width: 100%;
@@ -261,7 +251,6 @@ footer {
 
 .containerIcons {
   padding: 0% 0.3% 1% 0.3%;
-  background-color: transparent;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -269,12 +258,10 @@ footer {
 }
 
 .containerIcons a {
-  background-color: transparent;
   margin: 0 0.3rem;
 }
 
 .containerIcons img {
-  background-color: transparent;
   width: 1.4rem;
   cursor: pointer;
 }
@@ -302,14 +289,12 @@ footer {
 }
 
 .copyright {
-  background-color: transparent;
   font-size: 1.4rem;
   color: white;
   padding: 1%;
   font-weight: bold;
 }
 
-/******************************************** MEDIA QUERIES ********************************************/
 @media screen and (max-width: 768px) {
   main {
     flex-direction: column;
@@ -359,5 +344,4 @@ footer {
   .buttonEffect {
     margin: 1% 0;
   }
-
 }

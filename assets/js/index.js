@@ -4,6 +4,13 @@ const btnDecrypt = document.querySelector(".buttonDecrypt");
 const textAreaOut = document.querySelector(".outputSectionTextarea");
 const btnCopy = document.querySelector(".buttonCopy");
 const containerNotMessage = document.querySelector(".outputSectionContainerNotMessage");
+const rules = {
+  "a": "ai",
+  "e": "enter",
+  "i": "imes",
+  "o": "ober",
+  "u": "ufat"
+};
 const regex = /^[a-z.,!?\s]*$/;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -11,121 +18,72 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 textAreaInp.addEventListener("input", function () {
-  if (textAreaInp.value != "" || textAreaOut.value != "") {
-    containerNotMessage.style.display = "none";
-    btnCopy.style.display = "";
-  } else {
-    containerNotMessage.style.display = "";
-    btnCopy.style.display = "none";
-  }
+  const hasInput = textAreaInp.value.trim() !== "" || textAreaOut.value.trim() !== "";
+  containerNotMessage.style.display = hasInput ? "none" : "";
+  btnCopy.style.display = hasInput ? "" : "none";
 });
 
 btnEncrypt.addEventListener("click", function () {
-
   const textUser = textAreaInp.value.trim();
-
-  if (textUser.length > 0) {
-    if (regex.test(textUser)) {
-      let encryptedText = encryptText(textAreaInp.value);
-      showMessageOutput(encryptedText);
-      textAreaInp.value = "";
-    } else {
-      myAlert("error", "El texto no tiene el formato requerido");
-      showMessageOutput("");
-    }
-  } else {
-    myAlert("error", "Por favor, ingresa un texto a encriptar");
-    showMessageOutput("");
+  if (!textUser) {
+    return myAlert("error", "Introducir el texto a encriptar, por favor");
   }
-
+  if (!regex.test(textUser)) {
+    return myAlert("error", "El texto no tiene el formato requerido");
+  }
+  showMessageOutput(encryptText(textUser));
 });
 
 btnDecrypt.addEventListener("click", function () {
-
   const textEncrypted = textAreaInp.value.trim();
-
-  if (textEncrypted.length > 0) {
-    if (regex.test(textEncrypted)) {
-      let decryptedText = decryptText(textAreaInp.value);
-      showMessageOutput(decryptedText);
-      textAreaInp.value = "";
-    } else {
-      myAlert("error", "El texto no tiene el formato requerido");
-      showMessageOutput("");
-    }
-  } else {
-    myAlert("error", "Por favor, ingresa un texto a desencriptar");
-    showMessageOutput("");
+  if (!textEncrypted) {
+    return myAlert("error", "Introducir el texto a desencriptar, por favor");
   }
-
+  if (!regex.test(textEncrypted)) {
+    return myAlert("error", "El texto no tiene el formato requerido");
+  }
+  showMessageOutput(decryptText(textEncrypted));
 });
 
 btnCopy.addEventListener("click", function () {
-
-  textAreaOut.select();
-  if (textAreaOut.value.trim().length > 0) {
-    navigator.clipboard.writeText(textAreaOut.value)
-      .then(() => { myAlert("success", "Texto copiado");
-      showMessageOutput(""); })
-      .catch(error => { myAlert("error", "No se pudo copiar"); });
-  } else {
-    myAlert("error", "No hay texto que copiar");
+  const trimmedOutput = textAreaOut.value.trim();
+  if (!trimmedOutput) {
+    return myAlert("error", "No hay texto para copiar");
   }
+  navigator.clipboard.writeText(trimmedOutput)
+    .then(() => myAlert("success", "Texto copiado"))
+    .catch(() => myAlert("error", "Error al copiar el texto"));
 });
 
-
+/*Uso de spread (...textUser) para convertir el texto en un array de caracteres: [...textUser]
+  Mapeo de cada carácter a su equivalente encriptado: map(char => rules[char] || char)
+  Unión de los caracteres encriptados en un nuevo texto: join("")
+  Devolución del texto encriptado*/
 function encryptText(textUser) {
-
-  let encryptedText = "";
-
-  for (let t = 0; t < textUser.length; t++) {
-
-    let encryptedLetter = false;
-
-    for (let i = 0; i < rules.length; i++) {
-      if (textUser[t] == rules[i][0]) {
-        encryptedText += rules[i][1];
-        encryptedLetter = true;
-        break;
-      }
-    }
-
-    if (!encryptedLetter) {
-      encryptedText += textUser[t];
-    }
-  }
-  return encryptedText;
+  myAlert("success", "¡Texto encriptado con éxito!");
+  return [...textUser].map(char => rules[char] || char).join("");
 }
 
+/*Iteración a través de las reglas de encriptación: entries(rules)
+  Reemplazo de los caracteres encriptados por sus equivalentes originales: 
+    reduce((acc, [key, value]) => acc.split(value).join(key), textUser)
+  Devolución del texto desencriptado: */
 function decryptText(textUser) {
-
-  for (let i = 0; i < rules.length; i++) {
-    if (textUser.includes(rules[i][1])) {
-      textUser = textUser.replaceAll(rules[i][1], rules[i][0]);
-    }
-  }
-  return textUser;
+  myAlert("success", "¡Texto desencriptado con éxito!");
+  //return Object.entries(rules).reduce((acc, [key, value]) => acc.replaceAll(value, key), textUser);
+  return Object.entries(rules).reduce((acc, [key, value]) => acc.split(value).join(key), textUser);
 }
 
 function showMessageOutput(phrase) {
-  textAreaInp.focus();
-  textAreaOut.innerText = phrase;
+  textAreaOut.value = phrase;
 }
 
 function myAlert(icon, message) {
   Swal.fire({
     icon: icon,
     text: message,
-    timer: 3000,
+    timer: 1500,
     showConfirmButton: false,
     width: '30em'
   });
 }
-
-const rules = [
-  ["a", "ai"],
-  ["e", "enter"],
-  ["i", "imes"],
-  ["o", "ober"],
-  ["u", "ufat"]
-]
