@@ -289,10 +289,14 @@ footer {
 }
 
 .copyright {
-  font-size: 1.4rem;
+  font-size: .9rem;
   color: white;
   padding: 1%;
   font-weight: bold;
+}
+
+.copyright small {
+  font-size: .6rem;
 }
 
 @media screen and (max-width: 768px) {
